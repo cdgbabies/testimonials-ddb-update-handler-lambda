@@ -31,7 +31,7 @@ func (h *handler) handleRequest(ctx context.Context, event events.DynamoDBEvent)
 	}
 	err = service.UploadFileContents(ctx, h.s3Client, service.UploadContentsRequest{
 		BucketName: os.Getenv("bucket_name"),
-		Key:        os.Getenv("key_name"),
+		Key:        os.Getenv("file_name"),
 		Contents:   string(body),
 	})
 	return err
