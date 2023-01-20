@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: checkout source code
         uses: actions/checkout@v3
+      - name: print repo name
+        run: echo ${{ github.event.repository.name }}
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:          
@@ -27,5 +29,5 @@ jobs:
         run: |
            CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -a -o main ./cmd/main.go && zip main.zip main
       - name: Deploy to S3
-        run: aws s3 sync ./main.zip s3://${{ secrets.BUCKET_ID }//test
+        run: aws s3 sync ./main.zip s3://${{ secrets.BUCKET_ID }/test
      
