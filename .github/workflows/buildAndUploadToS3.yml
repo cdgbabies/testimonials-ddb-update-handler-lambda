@@ -29,6 +29,6 @@ jobs:
         run: |
            CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -a -o main ./cmd/main.go && zip main.zip main
       - name: Upload S3
-        run: aws s3 cp ./main.zip s3://${{ secrets.BUCKET_ID }}/ ${{ github.event.repository.name }} --region ${AWS_REGION} 
+        run: aws s3 cp ./main.zip s3://${{ secrets.BUCKET_ID }}/${{ github.event.repository.name }} --region ${AWS_REGION} 
        
      
