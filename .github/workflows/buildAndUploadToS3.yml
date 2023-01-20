@@ -29,13 +29,6 @@ jobs:
         run: |
            CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -a -o main ./cmd/main.go && zip main.zip main
       - name: Upload S3
-        # You may pin to the exact commit or the version.
-        # uses: shallwefootball/upload-s3-action@673c5bb70368c2dde8c5970bc67eb5263542b8a4
-        uses: shallwefootball/upload-s3-action@v1.2.0
-        with:          
-          aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}        
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}         
-          aws_bucket: ${{ secrets.BUCKET_ID }}          
-          source_dir: ./main.zip        
-          destination_dir: ${{ github.event.repository.name }}
+        run: aws s3 cp ./main.zip s3://${{ secrets.BUCKET_ID }}/ ${{ github.event.repository.name }} --region ${AWS_REGION} 
+       
      
