@@ -20,7 +20,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v1
         with:
             role-to-assume: ${{ secrets.WORKFLOW_S3_ACCESS_ROLE_ARN }}
-            role-session-name: add-testimonial-workflow
+            role-session-name: testimonial-handler-workflow
             aws-region: us-east-1
       - name: Install Go
         uses: actions/setup-go@v3.5.0      
