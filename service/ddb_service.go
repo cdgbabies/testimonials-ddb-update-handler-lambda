@@ -16,7 +16,7 @@ import (
 type Testimonial struct {
 	Sk          string    `json:"sk" dynamodbav:"sk"`
 	Pk          string    `json:"pk" dynamodbav:"pk"`
-	Author      string    `json:"description" dynamodbav:"author"`
+	Author      string    `json:"author" dynamodbav:"author"`
 	Testimonial string    `json:"testimonial" dynamodbav:"testimonial"`
 	CreatedDate time.Time `json:"createdDate" dynamodbav:"createdDate"`
 }

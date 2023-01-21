@@ -3,6 +3,7 @@ package service
 import (
 	"context"
 	"fmt"
+	"log"
 	"strings"
 
 	"github.com/aws/aws-sdk-go-v2/config"
@@ -34,6 +35,7 @@ func NewS3Client(ctx context.Context, region string) (*s3.Client, error) {
 }
 
 func UploadFileContents(ctx context.Context, s3Client S3UploadObjectClient, uploadContentsRequest UploadContentsRequest) error {
+	log.Println(uploadContentsRequest)
 	putObjectInput := &s3.PutObjectInput{
 		Bucket: &uploadContentsRequest.BucketName,
 		Key:    &uploadContentsRequest.Key,
